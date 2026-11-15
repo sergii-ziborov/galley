@@ -1,0 +1,19 @@
+[package]
+name = "galley"
+version = "1.0.0"
+edition = "2024"
+description = "A console browser. The page is drawn in the terminal."
+license = "MIT"
+repository = "https://github.com/sergii-ziborov/galley"
+
+[dependencies]
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "gif"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
+strip = true
